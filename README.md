@@ -1,2 +1,2 @@
-# Megaman-Kart-S.A.P.O.
+# Megaman-Kart
 repositório para Megaman Kart
