@@ -5,8 +5,19 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+<<<<<<< HEAD:Kartgame/UserSettings/EditorUserSettings.asset
     RecentlyUsedSceneGuid-0:
       value: 5a03035e53505b08090f5e2316775e44104f407a7f292736797d1e67b5b16669
+=======
+    RecentlyUsedScenePath-0:
+      value: 22424703114646700c1c182b1e2410231512162f3f6705313f1a183fe7e32076f7e93ffdfe
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 22424703114646700c1c182b1e2410231512162f3f670b3124272e30e7ee3176f7e93ffdfe
+>>>>>>> 5655432f515d54cd72d31ce7ce3ad7448680e87d:UserSettings/EditorUserSettings.asset
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646700c1c182b1e2410231512162f3f670f3e393b121ee7ee2176f7e93ffdfe
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

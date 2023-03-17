@@ -77,7 +77,11 @@
       }
     },
     "com.unity.ide.rider": {
+<<<<<<< HEAD:Kartgame/Packages/packages-lock.json
       "version": "3.0.16",
+=======
+      "version": "3.0.17",
+>>>>>>> 5655432f515d54cd72d31ce7ce3ad7448680e87d:Packages/packages-lock.json
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -86,7 +90,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
+<<<<<<< HEAD:Kartgame/Packages/packages-lock.json
       "version": "2.0.16",
+=======
+      "version": "2.0.17",
+>>>>>>> 5655432f515d54cd72d31ce7ce3ad7448680e87d:Packages/packages-lock.json
       "depth": 0,
       "source": "registry",
       "dependencies": {
