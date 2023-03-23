@@ -6,7 +6,9 @@ public class CaminhoneteScript : ChangeColliders
 {
     void Start()
     {
-        ChangeWheelPosition(FrontLeft, FrontRight, RearLeft, RearRight);        
+        ChangeWheelPosition(FrontLeft, FrontRight, RearLeft, RearRight);
+        ChangeCentreOfMass(carMass);
+        ChangePlayer(playerSpot);
     }
 
     // Update is called once per frame
