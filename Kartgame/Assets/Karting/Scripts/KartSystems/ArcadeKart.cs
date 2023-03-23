@@ -146,10 +146,10 @@ namespace KartGame.KartSystems
 
         [Header("Physical Wheels")]
         [Tooltip("The physical representations of the Kart's wheels.")]
-        private WheelCollider FrontLeftWheel;
-        private WheelCollider FrontRightWheel;
-        private WheelCollider RearLeftWheel;
-        private WheelCollider RearRightWheel;
+        public WheelCollider FrontLeftWheel;
+        public WheelCollider FrontRightWheel;
+        public WheelCollider RearLeftWheel;
+        public WheelCollider RearRightWheel;
 
         [Tooltip("Which layers the wheels will detect.")]
         public LayerMask GroundLayers = Physics.DefaultRaycastLayers;
