@@ -10,21 +10,13 @@ public class ChangeColliders : MonoBehaviour
     [SerializeField] private WheelCollider RearLeftWheel;
     [SerializeField] private WheelCollider RearRightWheel;
 
-    public static WheelCollider newFrontLeft;
-    public static WheelCollider newFrontRight;
-    public static WheelCollider newRearLeft;
-    public static WheelCollider newRearRight;
+    [SerializeField] protected Transform FrontLeft, FrontRight, RearLeft, RearRight;
 
-    // Start is called before the first frame update
-    void Start()
+    protected void ChangeWheelPosition(Transform FrontLeft, Transform FrontRight, Transform RearLeft, Transform RearRight)
     {
-
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FrontLeftWheel.transform.position = FrontLeft.transform.position;
+        FrontRightWheel.transform.position = FrontRight.transform.position;
+        RearLeftWheel.transform.position = RearLeft.transform.position;
+        RearRightWheel.transform.position = RearRight.transform.position;
     }
 }
