@@ -146,10 +146,10 @@ namespace KartGame.KartSystems
 
         [Header("Physical Wheels")]
         [Tooltip("The physical representations of the Kart's wheels.")]
-        public WheelCollider FrontLeftWheel;
-        public WheelCollider FrontRightWheel;
-        public WheelCollider RearLeftWheel;
-        public WheelCollider RearRightWheel;
+        private WheelCollider FrontLeftWheel;
+        private WheelCollider FrontRightWheel;
+        private WheelCollider RearLeftWheel;
+        private WheelCollider RearRightWheel;
 
         [Tooltip("Which layers the wheels will detect.")]
         public LayerMask GroundLayers = Physics.DefaultRaycastLayers;
@@ -186,7 +186,7 @@ namespace KartGame.KartSystems
         public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
 
         private void ActivateDriftVFX(bool active)
-        {
+        {            
             foreach (var vfx in m_DriftSparkInstances)
             {
                 if (active && vfx.wheel.GetGroundHit(out WheelHit hit))
