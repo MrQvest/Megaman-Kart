@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: acf773788ee38174cb14c8c148876428
+guid: 520188f97b1b229428c2d3e8164db2e9
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: chao
-    second: {fileID: 2800000, guid: 453b4a968815a3f49b4a248bcb4509eb, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: corpobarco
-    second: {fileID: 2800000, guid: 75c87b698591cec498c58dafd2e4add4, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: escada
-    second: {fileID: 2800000, guid: 4b163a5cdc69b51499e8c4f5fa42cc4c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: metaltextura
-    second: {fileID: 2800000, guid: 044020dada7bba243a26d7ffeb5ec4bc, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
