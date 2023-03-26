@@ -596,5 +596,12 @@ namespace KartGame.KartSystems
 
             ActivateDriftVFX(IsDrifting && GroundPercent > 0.0f);
         }
+        // Área de testes
+        private void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Powerup")) {
+                Destroy(other.gameObject);
+
+            }
+        }
     }
 }
