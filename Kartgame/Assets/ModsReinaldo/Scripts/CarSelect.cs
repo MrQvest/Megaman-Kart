@@ -9,34 +9,43 @@ public class CarSelect : MonoBehaviour
     private void Start()
     {
 
-       
-
+        
+        // Store player preference of previously selected car
         index = PlayerPrefs.GetInt("Character Selected");
 
-        carList= new GameObject[transform.childCount];
+        // Gets a list of the number of cars available
+        carList = new GameObject[transform.childCount];
 
-        for(int i = 0; i < transform.childCount; i++)
+        
+        for (int i = 0; i < transform.childCount; i++)
         {
-            carList[i]= transform.GetChild(i).gameObject;
+
+            // Make the cars visible 
+            carList[i] = transform.GetChild(i).gameObject;
         }
 
-        foreach(GameObject car in carList)
+        // Each and every car gets Deactivated
+        foreach (GameObject car in carList)
         {
             car.SetActive(false);
         }
+
+        // If car "x" was previously selected...
         if (carList[index])
         {
+
+            // Activate car "x" (Show it on screen next time)
             carList[index].SetActive(true);
         }
     }
 
-    public void PreviousCar() 
+    public void PreviousCar()
     {
         carList[index].SetActive(false);
 
         index--;
 
-        if(index < 0)
+        if (index < 0)
         {
             index = carList.Length - 1;
         }
@@ -50,7 +59,7 @@ public class CarSelect : MonoBehaviour
 
         index++;
 
-        if(index == carList.Length) 
+        if (index == carList.Length)
         {
             index = 0;
         }
