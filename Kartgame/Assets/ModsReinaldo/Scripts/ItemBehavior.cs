@@ -23,37 +23,38 @@ public class ItemBehavior : MonoBehaviour
 
     GameObject itemView;
 
-    private float spinTimer = 0;
-
     [SerializeField]
     private List<GameObject> itemModels;
+
+    public GameObject itemSelected;
 
     void Start()
     {
         StartCoroutine(FadeIn());
         StartCoroutine(SpinItem());
+        StartCoroutine(SpinAngle());
         spinA = _h_spinA * Mathf.Sin(Random.Range(-20, 20)) + _t_spinA;
         spinB = _h_spinB * Mathf.Sin(Random.Range(-20, 20)) + _t_spinB;
         spinC = _h_spinC * Mathf.Sin(Random.Range(-20, 20)) + _t_spinC;
         _w_spinA = Random.Range(-20f, 20f);
         _w_spinB = Random.Range(-20f, 20f);
         _w_spinC = Random.Range(-20f, 20f);
+        transform.localScale = Vector3.zero;
     }
 
     private IEnumerator FadeIn()
     {
-        for (float i = 0; transform.localScale.x < 0.75f; i += 0.25f * Time.deltaTime)
+        for (float i = 0; i < 1; i += 0.1f)
         {
             transform.localScale = new Vector3(i, i, i);
-            yield return null;
+            yield return new WaitForSeconds(0.025f);
         }
     }
 
     private IEnumerator SpinItem()
     {
-        
         int modelIndex = Random.Range(0, itemModels.Count);
-        for (float i = 0; i < 5; i += 0.25f * Time.deltaTime)
+        for (float i = 0; i < 5; i += 0.25f)
         {
             foreach (Transform child in transform)
             {
@@ -66,24 +67,27 @@ public class ItemBehavior : MonoBehaviour
             modelIndex = (modelIndex + 1) % itemModels.Count;
             yield return new WaitForSeconds(0.1f);
         }
+        itemSelected = itemView;
     }
 
     private IEnumerator SpinAngle()
     {
         while (true)
         {
+            transform.Rotate((speed + spinA) * Time.deltaTime, (speed + spinB) * Time.deltaTime, (speed + spinC) * Time.deltaTime);
             if (itemView)
             {
-                transform.Rotate((speed + spinA) * Time.deltaTime, (speed + spinB) * Time.deltaTime, (speed + spinC) * Time.deltaTime);
                 itemView.transform.rotation = transform.rotation;
-                _w_spinA = _w_spinA + _d_w_spinA;
-                spinA = _h_spinA * Mathf.Sin(_w_spinA) + _t_spinA;
-                _w_spinB = _w_spinB + _d_w_spinB;
-                spinB = _h_spinB * Mathf.Sin(_w_spinB) + _t_spinB;
-                _w_spinC = _w_spinC + _d_w_spinC;
-                spinC = _h_spinC * Mathf.Sin(_w_spinC) + _t_spinC;
             }
+            _w_spinA = _w_spinA + _d_w_spinA;
+            spinA = _h_spinA * Mathf.Sin(_w_spinA) + _t_spinA;
+            _w_spinB = _w_spinB + _d_w_spinB;
+            spinB = _h_spinB * Mathf.Sin(_w_spinB) + _t_spinB;
+            _w_spinC = _w_spinC + _d_w_spinC;
+            spinC = _h_spinC * Mathf.Sin(_w_spinC) + _t_spinC;
             yield return null;
         }
     }
+
+
 }

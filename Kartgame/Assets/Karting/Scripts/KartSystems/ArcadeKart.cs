@@ -282,6 +282,10 @@ namespace KartGame.KartSystems
 
         void FixedUpdate()
         {
+            if (Input.UseItem)
+            {
+                print("aseasera");
+            }
             UpdateSuspensionParams(FrontLeftWheel);
             UpdateSuspensionParams(FrontRightWheel);
             UpdateSuspensionParams(RearLeftWheel);
