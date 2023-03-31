@@ -98,3 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemModels:
   - {fileID: 919132149155446097, guid: 14b5680791ecbdf438afb0f5d5ba3684, type: 3}
+  variablesHolder: {fileID: 11400000, guid: 1294835b5b110a24d9fb760a63a782c1, type: 2}

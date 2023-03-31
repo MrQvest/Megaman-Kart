@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
+    #region Horrible variables
     float speed = 30f;
     float _h_spinA = (20 - (-20)) / 2;
     float _t_spinA = (20 + (-20)) / 2;
@@ -20,13 +21,15 @@ public class ItemBehavior : MonoBehaviour
     float spinC;
     float _w_spinC;
     float _d_w_spinC = 1.5f;
+    #endregion
 
     GameObject itemView;
 
     [SerializeField]
     private List<GameObject> itemModels;
 
-    public GameObject itemSelected;
+
+    [SerializeField] VariablesHolder variablesHolder;
 
     void Start()
     {
@@ -67,7 +70,7 @@ public class ItemBehavior : MonoBehaviour
             modelIndex = (modelIndex + 1) % itemModels.Count;
             yield return new WaitForSeconds(0.1f);
         }
-        itemSelected = itemView;
+            variablesHolder.selectedItemP1 = itemView;
     }
 
     private IEnumerator SpinAngle()

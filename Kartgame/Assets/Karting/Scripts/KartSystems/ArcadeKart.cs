@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.VFX;
+using ModScripts;
 
 namespace KartGame.KartSystems
 {
@@ -25,7 +25,7 @@ namespace KartGame.KartSystems
             [Header("Movement Settings")]
             [Min(0.001f), Tooltip("Top speed attainable when moving forward.")]
             public float TopSpeed;
-
+            
             [Tooltip("How quickly the kart reaches top speed.")]
             public float Acceleration;
 
@@ -34,7 +34,7 @@ namespace KartGame.KartSystems
 
             [Tooltip("How quickly the kart reaches top speed, when moving backward.")]
             public float ReverseAcceleration;
-
+            
             [Tooltip("How quickly the kart starts accelerating from 0. A higher number means it accelerates faster sooner.")]
             [Range(0.2f, 1)]
             public float AccelerationCurve;
@@ -287,7 +287,9 @@ namespace KartGame.KartSystems
         //Temporario
         public GameObject Disc;
         public bool itemUsed =  false;
+        ItemBehavior itemBehavior;
 
+       // DiscScript discScript;
         void FixedUpdate()
         {
             if (Input.UseItem && !itemUsed)
