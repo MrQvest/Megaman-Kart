@@ -7,6 +7,9 @@ namespace KartGame.KartSystems
 {
     public class ArcadeKart : MonoBehaviour
     {
+
+        
+
         [System.Serializable]
         public class StatPowerup
         {
@@ -280,11 +283,17 @@ namespace KartGame.KartSystems
             m_DriftSparkInstances.Add((wheel, horizontalOffset, -rotation, spark));
         }
 
+
+        //Temporario
+        public GameObject Disc;
+        public bool itemUsed =  false;
+
         void FixedUpdate()
         {
-            if (Input.UseItem)
+            if (Input.UseItem && !itemUsed)
             {
-                print("aseasera");
+                Instantiate(Disc, transform.position - (new Vector3(0f,2f,0f)), transform.rotation);
+                itemUsed = true;
             }
             UpdateSuspensionParams(FrontLeftWheel);
             UpdateSuspensionParams(FrontRightWheel);
