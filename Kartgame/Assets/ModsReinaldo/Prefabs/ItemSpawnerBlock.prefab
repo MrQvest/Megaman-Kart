@@ -114,3 +114,4 @@ MonoBehaviour:
     type: 3}
   itemPlayerHolder: {fileID: 5387909843195389523, guid: f8bbe40e3cfd2af4e8cf837b3a9e3b5b,
     type: 3}
+  variablesHolder: {fileID: 11400000, guid: 1294835b5b110a24d9fb760a63a782c1, type: 2}

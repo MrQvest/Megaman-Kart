@@ -8301,12 +8301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8876916865276689109, guid: 77c6d640feca25b4ba9f28ad61117a69,
-        type: 3}
-      propertyPath: itemPlayerHolder
-      value: 
-      objectReference: {fileID: 5387909843195389523, guid: f8bbe40e3cfd2af4e8cf837b3a9e3b5b,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c6d640feca25b4ba9f28ad61117a69, type: 3}
 --- !u!4 &1196939724 stripped
@@ -9223,17 +9217,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e23f203ad62a94a4692d8d18bcdeb80b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5229
+      value: -8.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e23f203ad62a94a4692d8d18bcdeb80b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.76
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e23f203ad62a94a4692d8d18bcdeb80b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.09
+      value: -11.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e23f203ad62a94a4692d8d18bcdeb80b,
         type: 3}
@@ -9426,6 +9420,12 @@ PrefabInstance:
       propertyPath: CenterOfMass
       value: 
       objectReference: {fileID: 879539756}
+    - target: {fileID: 4810912518991602694, guid: 19954de30401f73428254541a9ad156e,
+        type: 3}
+      propertyPath: variablesHolder
+      value: 
+      objectReference: {fileID: 11400000, guid: 1294835b5b110a24d9fb760a63a782c1,
+        type: 2}
     - target: {fileID: 4810912518991602694, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       propertyPath: baseStats.TopSpeed
@@ -12556,7 +12556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1687723347
 AudioSource:
   m_ObjectHideFlags: 0

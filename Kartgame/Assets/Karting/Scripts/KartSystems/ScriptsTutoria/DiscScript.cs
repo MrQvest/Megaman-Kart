@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ModScripts
 {
-    public class DiscScript : MonoBehaviour
+    public class DiscScript : MonoBehaviour, IUseItem
     {
 
         private Rigidbody rdbd;
@@ -39,6 +39,12 @@ namespace ModScripts
             var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
 
             rdbd.velocity = direction * Mathf.Max(speed, 30f);
+        }
+
+        public void UseItem(Transform position, Quaternion rotation)
+        {
+            Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
+
         }
 
     }

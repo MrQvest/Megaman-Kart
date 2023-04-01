@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IUseItem
 {
-    void UseItem();
+    void UseItem(Transform position, Quaternion rotation);
 }
