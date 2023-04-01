@@ -10,6 +10,9 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     private GameObject itemPlayerHolder;
 
+    [SerializeField]
+    private VariablesHolder variablesHolder;
+
     private float respawnTimer = 0;
 
     // Start is called before the first frame update
@@ -55,6 +58,7 @@ public class ItemSpawner : MonoBehaviour
                     }
                     var itemHolder = Instantiate(itemPlayerHolder, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, other.transform);
                     itemHolder.transform.localPosition = new Vector3(0, 3, -2);
+                    variablesHolder.itemHolderP1 = itemHolder;
                 }
             }
         }

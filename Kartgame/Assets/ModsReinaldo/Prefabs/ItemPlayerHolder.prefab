@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd00f545eccc9542b93870b2d0a3bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemView: {fileID: 0}
   itemModels:
   - {fileID: 919132149155446097, guid: 14b5680791ecbdf438afb0f5d5ba3684, type: 3}
+  itemObjects:
+  - {fileID: 6016976893662588055, guid: 8976522660952b64382a1aade0496b8f, type: 3}
   variablesHolder: {fileID: 11400000, guid: 1294835b5b110a24d9fb760a63a782c1, type: 2}

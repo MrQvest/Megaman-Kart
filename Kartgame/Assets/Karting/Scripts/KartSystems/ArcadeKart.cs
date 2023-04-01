@@ -286,16 +286,22 @@ namespace KartGame.KartSystems
 
         //Temporario
         public GameObject Disc;
-        public bool itemUsed =  false;
         ItemBehavior itemBehavior;
+        [SerializeField] VariablesHolder variablesHolder;
 
        // DiscScript discScript;
         void FixedUpdate()
         {
-            if (Input.UseItem && !itemUsed)
+            if (Input.UseItem && !variablesHolder.itemUsed)
             {
-                Instantiate(Disc, transform.position - (new Vector3(0f,2f,0f)), transform.rotation);
-                itemUsed = true;
+                IUseItem useItem = variablesHolder.selectedItemP1.GetComponent<IUseItem>();
+                if(useItem != null) 
+                {
+                    useItem.UseItem(transform, transform.rotation);
+                    variablesHolder.itemUsed = true;
+                    Destroy(variablesHolder.itemHolderP1);
+                }
+                
             }
             UpdateSuspensionParams(FrontLeftWheel);
             UpdateSuspensionParams(FrontRightWheel);

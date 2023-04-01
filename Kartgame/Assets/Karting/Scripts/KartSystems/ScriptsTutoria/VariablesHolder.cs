@@ -7,4 +7,7 @@ using UnityEngine;
 public class VariablesHolder : ScriptableObject
 {
     public GameObject selectedItemP1;
+    public bool itemUsed;
+    public GameObject selectedItemP2;
+    public GameObject itemHolderP1;
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KartGame.KartSystems;
 
 public class ItemBehavior : MonoBehaviour
 {
@@ -23,10 +24,13 @@ public class ItemBehavior : MonoBehaviour
     float _d_w_spinC = 1.5f;
     #endregion
 
-    GameObject itemView;
+     public GameObject itemView;
 
     [SerializeField]
     private List<GameObject> itemModels;
+
+    [SerializeField]
+    private List<GameObject> itemObjects;
 
 
     [SerializeField] VariablesHolder variablesHolder;
@@ -64,13 +68,26 @@ public class ItemBehavior : MonoBehaviour
                 Destroy(child.gameObject);
             }
             itemView = Instantiate(itemModels[modelIndex], transform.position, transform.rotation, transform);
-            itemView.AddComponent<ItemSpin>();
             itemView.transform.localScale = transform.localScale;
             itemView.transform.rotation = transform.rotation;
             modelIndex = (modelIndex + 1) % itemModels.Count;
             yield return new WaitForSeconds(0.1f);
+        }       
+        SelectCorrectItem();
+    }
+
+    private void SelectCorrectItem()
+    {
+
+        switch (itemView.name)
+        {
+            case "Peao(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[0];
+                    break;
         }
-            variablesHolder.selectedItemP1 = itemView;
+
+        variablesHolder.itemUsed = false;
+
     }
 
     private IEnumerator SpinAngle()
