@@ -10,4 +10,5 @@ public class VariablesHolder : ScriptableObject
     public bool itemUsed;
     public GameObject selectedItemP2;
     public GameObject itemHolderP1;
+    public GameObject itemHolderP2;
 }

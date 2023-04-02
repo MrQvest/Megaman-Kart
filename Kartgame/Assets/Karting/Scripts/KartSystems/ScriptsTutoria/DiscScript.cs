@@ -20,7 +20,6 @@ namespace ModScripts
             col = GetComponent<Collider>();
             Invoke("Destroy", 4f);
             rdbd.velocity = transform.forward * 30f;
-           // arcadeKart = FindObjectOfType<ArcadeKart>();
         }
         private void FixedUpdate()
         {
