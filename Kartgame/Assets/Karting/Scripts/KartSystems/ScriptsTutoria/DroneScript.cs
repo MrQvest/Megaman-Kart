@@ -2,68 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneScript : MonoBehaviour, IUseItem
+namespace ModScripts
 {
-    // Start is called before the first frame update
-    public float Speed = 5f; // Velocidade de perseguição
-    private Transform Player; // Transform do jogador mais próximo
-    public LineRenderer lineRenderer1; // Referência ao Line Renderer
-    public LineRenderer lineRenderer2;
-    public LineRenderer lineRenderer3;
-    void Start()
+    public class DroneScript : MonoBehaviour, IUseItem
     {
-        lineRenderer1 = GetComponent<LineRenderer>();
-        lineRenderer2 = GetComponent<LineRenderer>();
-        lineRenderer3 = GetComponent<LineRenderer>();
-    }
+        public float moveSpeed = 10f;
+        public float rotateSpeed = 100f;
+        public float trackingRange = 20f;
+        public float explosionRadius = 5f;
+        public GameObject explosionEffect;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Encontra o jogador mais próximo
-        Player = FindNextPlayer();
+        private Transform target;
 
-        if (Player != null)
+        private void Start()
         {
-            // Direciona o objeto para o jogador
-            transform.LookAt(Player);
-
-            // Move o objeto em direção ao jogador
-            transform.position += transform.forward * Speed * Time.deltaTime;
-
-            // Configura a posição das pontas do Line Renderer
-            lineRenderer1.SetPosition(0, transform.position);
-            lineRenderer1.SetPosition(1, Player.position);
-            lineRenderer2.SetPosition(0, transform.position);
-            lineRenderer2.SetPosition(1, Player.position);
-            lineRenderer3.SetPosition(0, transform.position);
-            lineRenderer3.SetPosition(1, Player.position);
+            // Encontra o jogador e define como alvo do casco azul
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
-    }
 
-    Transform FindNextPlayer()
-    {
-        GameObject[] Players= GameObject.FindGameObjectsWithTag("Player"); // Encontra todos os jogadores
-        Transform NextPlayer= null;
-        float Closedistance= Mathf.Infinity;
-
-        foreach (GameObject player in Players)
+        private void Update()
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-
-            if (distance < Closedistance)
+            // Verifica se o alvo está dentro do raio de perseguição
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance <= trackingRange)
             {
-                Closedistance = distance;
-                NextPlayer = player.transform;
+                // Rotaciona o casco azul em direção ao alvo
+                Vector3 targetDirection = target.position - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newDirection);
+
+                // Move o casco azul em direção ao alvo
+                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
+                // Se o casco azul atingir o jogador, explode e causa dano
+                if (distance <= explosionRadius)
+                {
+                    Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                    // Causa dano ao jogador aqui
+                }
             }
         }
-
-        return NextPlayer;
-    }
-
-    public void UseItem(Transform position, Quaternion rotation)
-    {
-        Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
+        public void UseItem(Transform position, Quaternion rotation)
+        {
+            Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
+        }
     }
 }
    
