@@ -87,6 +87,10 @@ public class ItemBehavior : MonoBehaviour
                     modelScale = 6.25f;
                     break;
 
+                case "teleporter(Clone)":
+                    modelScale = 1f;
+                    break;
+
                 default:
                     modelScale = 1;
                     break;
@@ -115,6 +119,9 @@ public class ItemBehavior : MonoBehaviour
                 break;
             case "ShockwaveModel(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[3];
+                break;
+            case "teleporter(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[4];
                 break;
         }
 
