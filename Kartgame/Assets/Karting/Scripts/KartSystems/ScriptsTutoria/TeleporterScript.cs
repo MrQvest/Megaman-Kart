@@ -19,28 +19,38 @@ namespace ModScripts
         }
 
         private void Update()
+{
+    if (isTeleporting)
+    {
+        return;
+    }
+
+    // Verifica se há pelo menos dois jogadores próximos o suficiente para teleporte
+    Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
+    int numValidColliders = 0;
+    foreach (Collider col in colliders)
+    {
+        if (col.CompareTag("Player") && col.gameObject != gameObject)
         {
-            if (isTeleporting)
+            numValidColliders++;
+        }
+    }
+    if (numValidColliders >= 2)
+    {
+        // Teleporta para um jogador aleatório
+        List<Collider> validColliders = new List<Collider>();
+        foreach (Collider col in colliders)
+        {
+            if (col.CompareTag("Player") && col.gameObject != gameObject)
             {
-                return;
-            }
-
-            // Verifica se algum jogador está próximo o suficiente para teleporte
-            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
-            foreach (Collider col in colliders)
-            {
-                if (col.CompareTag("Player") && col.gameObject != gameObject)
-                {
-                    // Mostra o efeito de teleporte
-                    //GameObject effect = Instantiate(teleportEffect, transform.position, Quaternion.identity);
-                    //Destroy(effect, teleportTime);
-
-                    // Inicia o teleporte
-                    StartCoroutine(Teleport(col.transform));
-                    break;
-                }
+                validColliders.Add(col);
             }
         }
+        Collider target = validColliders[Random.Range(0, validColliders.Count)];
+        StartCoroutine(Teleport(target.transform));
+    }
+}
+
 
         private IEnumerator Teleport(Transform target)
         {
