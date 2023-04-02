@@ -22,7 +22,7 @@ namespace ModScripts
 
         private void Update()
         {
-            // Verifica se o alvo est· dentro do raio de perseguiÁ„o
+            // Verifica se o alvo estÅEdentro do raio de perseguiÁ„o
             float distance = Vector3.Distance(transform.position, target.position);
             if (distance <= trackingRange)
             {

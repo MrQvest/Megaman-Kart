@@ -91,6 +91,10 @@ public class ItemBehavior : MonoBehaviour
                     modelScale = 1f;
                     break;
 
+                case "ShieldEffect_View(Clone)":
+                    modelScale = 0.7f;
+                    break;
+
                 default:
                     modelScale = 1;
                     break;
@@ -122,6 +126,9 @@ public class ItemBehavior : MonoBehaviour
                 break;
             case "teleporter(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[4];
+                break;
+            case "ShieldEffect_View(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[5];
                 break;
         }
 
