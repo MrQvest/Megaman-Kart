@@ -89,6 +89,9 @@ public class ItemBehavior : MonoBehaviour
             case "Cone(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[1];
                 break;
+            case "teleporter(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[2];
+                break;
         }
 
         variablesHolder.itemUsed = false;

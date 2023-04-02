@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleporterScript : MonoBehaviour
+public class TeleporterScript : MonoBehaviour, IUseItem
 {
     public float maxRange = 5f;
     public float teleportTime = 2f;
@@ -60,4 +60,10 @@ public class TeleporterScript : MonoBehaviour
 
         isTeleporting = false;
     }
+
+    public void UseItem(Transform position, Quaternion rotation)
+        {
+            Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
+
+        }
 }
