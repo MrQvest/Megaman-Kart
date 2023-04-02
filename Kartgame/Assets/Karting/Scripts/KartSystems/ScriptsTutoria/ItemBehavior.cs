@@ -47,6 +47,8 @@ public class ItemBehavior : MonoBehaviour
         _w_spinB = Random.Range(-20f, 20f);
         _w_spinC = Random.Range(-20f, 20f);
         transform.localScale = Vector3.zero;
+
+        
     }
 
     private IEnumerator FadeIn()
@@ -84,6 +86,9 @@ public class ItemBehavior : MonoBehaviour
             case "Peao(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[0];
                     break;
+            case "Cone(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[1];
+                break;
         }
 
         variablesHolder.itemUsed = false;
