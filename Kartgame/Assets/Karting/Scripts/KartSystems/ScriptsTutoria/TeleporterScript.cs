@@ -2,68 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleporterScript : MonoBehaviour, IUseItem
+namespace ModScripts
 {
-    public float maxRange = 5f;
-    public float teleportTime = 2f;
-    public GameObject teleportEffect;
-
-    private Rigidbody kartRigidbody;
-    private bool isTeleporting = false;
-
-    private void Start()
+    public class TeleporterScript : MonoBehaviour, IUseItem
     {
-        kartRigidbody = GetComponent<Rigidbody>();
-    }
+        public float maxRange = 5f;
+        public float teleportTime = 2f;
+        public GameObject teleportEffect;
 
-    private void Update()
-    {
-        if (isTeleporting)
+        private Rigidbody kartRigidbody;
+        private bool isTeleporting = false;
+
+        private void Start()
         {
-            return;
+            kartRigidbody = GetComponent<Rigidbody>();
         }
 
-        // Verifica se algum jogador está próximo o suficiente para teleporte
-        Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
-        foreach (Collider col in colliders)
+        private void Update()
         {
-            if (col.CompareTag("Player") && col.gameObject != gameObject)
+            if (isTeleporting)
             {
-                // Mostra o efeito de teleporte
-                GameObject effect = Instantiate(teleportEffect, transform.position, Quaternion.identity);
-                Destroy(effect, teleportTime);
+                return;
+            }
 
-                // Inicia o teleporte
-                StartCoroutine(Teleport(col.transform));
-                break;
+            // Verifica se algum jogador está próximo o suficiente para teleporte
+            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
+            foreach (Collider col in colliders)
+            {
+                if (col.CompareTag("Player") && col.gameObject != gameObject)
+                {
+                    // Mostra o efeito de teleporte
+                    //GameObject effect = Instantiate(teleportEffect, transform.position, Quaternion.identity);
+                    //Destroy(effect, teleportTime);
+
+                    // Inicia o teleporte
+                    StartCoroutine(Teleport(col.transform));
+                    break;
+                }
             }
         }
-    }
 
-    private IEnumerator Teleport(Transform target)
-    {
-        isTeleporting = true;
+        private IEnumerator Teleport(Transform target)
+        {
+            isTeleporting = true;
 
-        // Aguarda o tempo de carregamento
-        yield return new WaitForSeconds(teleportTime);
+            // Aguarda o tempo de carregamento
+            yield return new WaitForSeconds(teleportTime);
 
-        // Obtém a velocidade do kart atual
-        Vector3 currentVelocity = kartRigidbody.velocity;
+            // Obtém a velocidade do kart atual
+            Vector3 currentVelocity = kartRigidbody.velocity;
 
-        // Troca a posição do kart atual com o kart alvo
-        Vector3 tempPosition = transform.position;
-        transform.position = target.position;
-        target.position = tempPosition;
+            // Troca a posição do kart atual com o kart alvo
+            Vector3 tempPosition = transform.position;
+            transform.position = target.position;
+            target.position = tempPosition;
 
-        // Mantém a velocidade do kart atual
-        kartRigidbody.velocity = currentVelocity;
+            // Mantém a velocidade do kart atual
+            kartRigidbody.velocity = currentVelocity;
 
-        isTeleporting = false;
-    }
+            isTeleporting = false;
+        }
 
-    public void UseItem(Transform position, Quaternion rotation)
+        public void UseItem(Transform position, Quaternion rotation)
         {
             Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
 
         }
+    }
 }

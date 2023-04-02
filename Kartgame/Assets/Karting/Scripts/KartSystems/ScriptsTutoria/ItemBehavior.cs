@@ -47,8 +47,6 @@ public class ItemBehavior : MonoBehaviour
         _w_spinB = Random.Range(-20f, 20f);
         _w_spinC = Random.Range(-20f, 20f);
         transform.localScale = Vector3.zero;
-
-        
     }
 
     private IEnumerator FadeIn()
@@ -63,6 +61,7 @@ public class ItemBehavior : MonoBehaviour
     private IEnumerator SpinItem()
     {
         int modelIndex = Random.Range(0, itemModels.Count);
+        float modelScale = 1;
         for (float i = 0; i < 5; i += 0.25f)
         {
             foreach (Transform child in transform)
@@ -70,7 +69,33 @@ public class ItemBehavior : MonoBehaviour
                 Destroy(child.gameObject);
             }
             itemView = Instantiate(itemModels[modelIndex], transform.position, transform.rotation, transform);
-            itemView.transform.localScale = transform.localScale;
+            switch (itemView.name)
+            {
+                case "Peao(Clone)":
+                    modelScale = 1.5f;
+                    break;
+
+                case "Cone(Clone)":
+                    modelScale = 32;
+                    break;
+
+                case "ShockwaveModel(Clone)":
+                    modelScale = 90;
+                    break;
+
+                case "Drone(Clone)":
+                    modelScale = 6.25f;
+                    break;
+
+                case "teleporter(Clone)":
+                    modelScale = 1f;
+                    break;
+
+                default:
+                    modelScale = 1;
+                    break;
+            }
+            itemView.transform.localScale = transform.localScale * modelScale;
             itemView.transform.rotation = transform.rotation;
             modelIndex = (modelIndex + 1) % itemModels.Count;
             yield return new WaitForSeconds(0.1f);
@@ -89,8 +114,14 @@ public class ItemBehavior : MonoBehaviour
             case "Cone(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[1];
                 break;
-            case "teleporter(Clone)":
+            case "Drone(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[2];
+                break;
+            case "ShockwaveModel(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[3];
+                break;
+            case "teleporter(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[4];
                 break;
         }
 
