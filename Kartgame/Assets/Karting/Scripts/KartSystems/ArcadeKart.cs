@@ -236,6 +236,7 @@ namespace KartGame.KartSystems
 
         void Awake()
         {
+
             Rigidbody = GetComponent<Rigidbody>();
             m_Inputs = GetComponents<IInput>();
 

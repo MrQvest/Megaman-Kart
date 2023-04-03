@@ -104,6 +104,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 96326ab84dbdd2f4b893bf751581da3e, type: 3}
   - {fileID: 919132149155446097, guid: 89fb1c8d91b8db06dae9db15a2483cf1, type: 3}
   - {fileID: 2112847038773468945, guid: fb4d2aca38f6bd24e9c862cc1dd6eab2, type: 3}
+  - {fileID: 919132149155446097, guid: 77521d78a66c070479a663828e735918, type: 3}
   itemObjects:
   - {fileID: 6016976893662588055, guid: 8976522660952b64382a1aade0496b8f, type: 3}
   - {fileID: 841789684565743725, guid: 92ca4e4f29349b949b97f795d3599ea5, type: 3}
@@ -111,4 +112,5 @@ MonoBehaviour:
   - {fileID: 1611331875712395219, guid: 651b0cbe3e08b764d871bf1c11aa2743, type: 3}
   - {fileID: 1414593490427805831, guid: 18642e5e76b70722b914a4b0d64cc1a1, type: 3}
   - {fileID: 2112847038773468945, guid: 02daa62fe6057e84c86206decdd09cdf, type: 3}
+  - {fileID: 6656221332871443408, guid: 7adc0c122de40b04eb0d686c0761c2f3, type: 3}
   variablesHolder: {fileID: 11400000, guid: 1294835b5b110a24d9fb760a63a782c1, type: 2}

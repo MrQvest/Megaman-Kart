@@ -94,6 +94,9 @@ public class ItemBehavior : MonoBehaviour
                 case "ShieldEffect_View(Clone)":
                     modelScale = 0.7f;
                     break;
+                case "item kart joao(Clone)":
+                    modelScale = 0.3f;
+                    break;
 
                 default:
                     modelScale = 1;
@@ -130,6 +133,10 @@ public class ItemBehavior : MonoBehaviour
             case "ShieldEffect_View(Clone)":
                 variablesHolder.selectedItemP1 = itemObjects[5];
                 break;
+            case "item kart joao(Clone)":
+                variablesHolder.selectedItemP1 = itemObjects[6];
+                break;
+
         }
 
         variablesHolder.itemUsed = false;
