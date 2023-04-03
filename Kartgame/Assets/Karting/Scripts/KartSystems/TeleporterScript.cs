@@ -20,16 +20,16 @@ namespace ModScripts
 
         private void Start()
         {
+            // Percorre todos os objetos na cena que possuem um componente Rigidbody
             foreach (Rigidbody rdbds in FindObjectsOfType<Rigidbody>())
             { 
-
+                // Verifica se o objeto possui a tag "Player"
                 if (rdbds.CompareTag("Player"))
                 {
-                    rdbdList.Add(rdbds);
-                    
+                    // Se tiver, adiciona o Rigidbody do objeto à lista rdbdList
+                    rdbdList.Add(rdbds);   
                 }
             }
-            
 
             /*FindObjectOfType<Rigidbody>().CompareTag("Player");
             teleporterTarget = GameObject.FindGameObjectWithTag("Player").transform;*/
@@ -37,21 +37,23 @@ namespace ModScripts
 
         private void Update()
         {
+            // Se já estiver teleportando, não faz nada
             if (isTeleporting)
             {
                 return;
             }
 
-            // Verifica se há pelo menos dois jogadores próximos o suficiente para teleporte
-            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
+            // Verifica quantos jogadores estão próximos o suficiente para o teleporte
+            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange); // Cria um array de colliders dos objetos que estão dentro do raio definido
             int numValidColliders = 0;
             foreach (Collider col in colliders)
             {
-                if (col.CompareTag("Player") && col.gameObject != gameObject)
+                if (col.CompareTag("Player") && col.gameObject != gameObject) // Se o collider tiver a tag "Player" e não for o objeto atual
                 {
-                    numValidColliders++;
+                    numValidColliders++; // Incrementa o número de colliders válidos para o teleporte
                 }
             }
+
             if (numValidColliders >= 1) // se há pelo menos um jogador dentro do raio de detecção
             {
                 // Teleporta para um jogador aleatório
