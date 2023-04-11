@@ -12,8 +12,11 @@ namespace ModScripts
 
         private Transform teleporterTarget;
         private bool isTeleporting = false;
-        private GameObject player0Object;
-        
+        private GameObject playerObject;
+        private GameObject currentPlayer;
+        private GameObject[] playerList;
+
+        // Lista de Rigidbody chamada rdbdList
         List<Rigidbody> rdbdList = new List<Rigidbody>();
         Rigidbody[] rdbdsArray;
 
@@ -21,25 +24,23 @@ namespace ModScripts
 
         private void Awake()
         {
-            player0Object = GameObject.FindGameObjectWithTag("Player0");
-            Collider player0Collider = player0Object.GetComponent<Collider>();
+            currentPlayer = GameObject.FindGameObjectWithTag("Player");
+            playerObject = GameObject.FindGameObjectWithTag("Player");
+            playerList = GameObject.FindGameObjectsWithTag("Player");
         }
 
         private void Start()
         {
+            // Procura por todos os objetos contendo Rigidbody
             foreach (Rigidbody rdbds in FindObjectsOfType<Rigidbody>())
             { 
-
+                // Verifica se eles têm a Tag Player e os adiciona à lista rdbdList
                 if (rdbds.CompareTag("Player"))
                 {
                     rdbdList.Add(rdbds);
                     
                 }
             }
-            
-
-            /*FindObjectOfType<Rigidbody>().CompareTag("Player");
-            teleporterTarget = GameObject.FindGameObjectWithTag("Player").transform;*/
         }
 
         private void Update()
@@ -49,27 +50,31 @@ namespace ModScripts
                 return;
             }
 
-            // Verifica se há pelo menos dois jogadores próximos o suficiente para teleporte
+            // Verifica se há um jogador próximo o suficiente para teleporte
             Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
             int numValidColliders = 0;
             foreach (Collider col in colliders)
             {
-                if (col.CompareTag("Player") && col.gameObject != player0Object.GetComponent<Collider>())
+                // Se os colliders tiverem a Tag Player
+                if (col.CompareTag("Player"))
                 {
+                    // Os adiciona à numValidColliders
                     numValidColliders++;
                 }
             }
             if (numValidColliders >= 1)
             {
-                // Teleporta para um jogador aleatório
+                // Teleporta para o próximo jogador
                 List<Collider> validColliders = new List<Collider>();
                 foreach (Collider col in colliders)
                 {
-                    if (col.CompareTag("Player") && col.gameObject != player0Object.GetComponent<Collider>())
-                    {
-                        validColliders.Add(col);
-                    }
+                    if (col.CompareTag("Player"))   // Corrigir para que o script reconheça o jogador atual, e não o adicione à lista validColliders
+                    {                               //
+                        validColliders.Add(col);    //
+                    }                               //
                 }
+
+                // Teleporta para o próximo jogador, sem aleatoriedade
                 Collider target = validColliders[Random.Range(0, validColliders.Count)];
                 StartCoroutine(Teleport(target.transform));
             }
@@ -84,15 +89,15 @@ namespace ModScripts
             yield return new WaitForSeconds(teleportTime);
 
             // Obtém a velocidade do kart atual
-            Vector3 currentVelocity = player0Object.GetComponent<Rigidbody>().velocity;
+            Vector3 currentVelocity = playerObject.GetComponent<Rigidbody>().velocity;
 
             // Troca a posição do kart atual com o kart alvo
-            Vector3 tempPosition = player0Object.transform.position;      // Corrigir
-            player0Object.transform.position = target.position;           // Corrigir
+            Vector3 tempPosition = playerObject.transform.position;      // Corrigir
+            playerObject.transform.position = target.position;           // Corrigir
             target.position = tempPosition;                 // Corrigir
 
             // Mantém a velocidade do kart atual
-            player0Object.GetComponent<Rigidbody>().velocity = currentVelocity;
+            playerObject.GetComponent<Rigidbody>().velocity = currentVelocity;
 
             isTeleporting = false;
         }
