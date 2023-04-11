@@ -9,6 +9,8 @@ public class TimeZoneScript : MonoBehaviour
     ArcadeKart arcadeKart;
     
 
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !slowed)

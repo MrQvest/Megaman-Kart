@@ -106,6 +106,8 @@ namespace ModScripts
         {
             Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
 
+            print(position.gameObject.name); //Essa linha da print no nome do objeto que usou o item
+
         }
     }
 }
