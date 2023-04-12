@@ -8,37 +8,28 @@ namespace ModScripts
     {
         public float maxRange = 5f;
         public float teleportTime = 2f;
-        public GameObject teleportEffect;
+        public LayerMask playerALayer;
+        public LayerMask playerBLayer;
 
-        private Transform teleporterTarget;
         private bool isTeleporting = false;
         private GameObject playerObject;
-        private GameObject currentPlayer;
-        private GameObject[] playerList;
 
         // Lista de Rigidbody chamada rdbdList
         List<Rigidbody> rdbdList = new List<Rigidbody>();
-        Rigidbody[] rdbdsArray;
-
-        int index = 0;
-
-        private void Awake()
-        {
-            currentPlayer = GameObject.FindGameObjectWithTag("Player");
-            playerObject = GameObject.FindGameObjectWithTag("Player");
-            playerList = GameObject.FindGameObjectsWithTag("Player");
-        }
 
         private void Start()
         {
+            playerALayer = LayerMask.GetMask("PlayerA");
+            playerBLayer = LayerMask.GetMask("PlayerB");
+
             // Procura por todos os objetos contendo Rigidbody
             foreach (Rigidbody rdbds in FindObjectsOfType<Rigidbody>())
-            { 
+            {
                 // Verifica se eles têm a Tag Player e os adiciona à lista rdbdList
                 if (rdbds.CompareTag("Player"))
                 {
                     rdbdList.Add(rdbds);
-                    
+
                 }
             }
         }
@@ -55,8 +46,8 @@ namespace ModScripts
             int numValidColliders = 0;
             foreach (Collider col in colliders)
             {
-                // Se os colliders tiverem a Tag Player
-                if (col.CompareTag("Player"))
+                // Se os colliders estiverem nas layers PlayerA ou PlayerB e não forem o jogador atual
+                if ((col.gameObject.layer == LayerMask.NameToLayer("PlayerA") || col.gameObject.layer == LayerMask.NameToLayer("PlayerB")) && col.gameObject != playerObject)
                 {
                     // Os adiciona à numValidColliders
                     numValidColliders++;
@@ -68,14 +59,13 @@ namespace ModScripts
                 List<Collider> validColliders = new List<Collider>();
                 foreach (Collider col in colliders)
                 {
-                    if (col.CompareTag("Player"))   // Corrigir para que o script reconheça o jogador atual, e não o adicione à lista validColliders
-                    {                               //
-                        validColliders.Add(col);    //
-                    }                               //
+                    if ((col.gameObject.layer == LayerMask.NameToLayer("PlayerA") || col.gameObject.layer == LayerMask.NameToLayer("PlayerB")) && col.gameObject != playerObject)
+                    {
+                        validColliders.Add(col);
+                    }
                 }
 
-                // Teleporta para o próximo jogador, sem aleatoriedade
-                Collider target = validColliders[Random.Range(0, validColliders.Count)];
+                Collider target = validColliders[0];
                 StartCoroutine(Teleport(target.transform));
             }
         }
@@ -92,9 +82,9 @@ namespace ModScripts
             Vector3 currentVelocity = playerObject.GetComponent<Rigidbody>().velocity;
 
             // Troca a posição do kart atual com o kart alvo
-            Vector3 tempPosition = playerObject.transform.position;      // Corrigir
-            playerObject.transform.position = target.position;           // Corrigir
-            target.position = tempPosition;                 // Corrigir
+            Vector3 tempPosition = playerObject.transform.position;
+            playerObject.transform.position = target.position;
+            target.position = tempPosition;
 
             // Mantém a velocidade do kart atual
             playerObject.GetComponent<Rigidbody>().velocity = currentVelocity;
@@ -104,8 +94,8 @@ namespace ModScripts
 
         public void UseItem(Transform position, Quaternion rotation)
         {
+            playerObject = position.gameObject;
             Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
-
             print(position.gameObject.name); //Essa linha da print no nome do objeto que usou o item
 
         }
