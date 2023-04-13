@@ -25,7 +25,7 @@ namespace ModScripts
                 {
                     nearestObject = obj;
 
-                    // Infinito ser· dist‚ncia atual
+                    // Infinito serÅEdist‚ncia atual
                     nearestDistance = distance;
                 }
             }

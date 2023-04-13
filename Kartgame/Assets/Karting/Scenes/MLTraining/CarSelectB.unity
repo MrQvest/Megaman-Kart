@@ -207,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2042669215}
-        m_TargetAssemblyTypeName: CarSelect, Assembly-CSharp
+      - m_Target: {fileID: 2042669217}
+        m_TargetAssemblyTypeName: CarSelectB, KartGame
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Select car: Player 1'
+  m_text: 'Select car: Player 2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f6d61b5482264a42bea60d5f05f96c9, type: 2}
   m_sharedMaterial: {fileID: 7121518115856803461, guid: 3f6d61b5482264a42bea60d5f05f96c9,
@@ -1520,8 +1520,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2042669215}
-        m_TargetAssemblyTypeName: CarSelect, Assembly-CSharp
+      - m_Target: {fileID: 2042669217}
+        m_TargetAssemblyTypeName: CarSelectB, KartGame
         m_MethodName: PreviousCar
         m_Mode: 1
         m_Arguments:
@@ -1954,8 +1954,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2042669215}
-        m_TargetAssemblyTypeName: CarSelect, Assembly-CSharp
+      - m_Target: {fileID: 2042669217}
+        m_TargetAssemblyTypeName: CarSelectB, KartGame
         m_MethodName: NextCar
         m_Mode: 1
         m_Arguments:
@@ -2013,7 +2013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042669216}
-  - component: {fileID: 2042669215}
+  - component: {fileID: 2042669217}
   m_Layer: 0
   m_Name: 'Car Select '
   m_TagString: Untagged
@@ -2021,18 +2021,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2042669215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042669214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a51cc4f5d34eb419d063105adbf85d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2042669216
 Transform:
   m_ObjectHideFlags: 0
@@ -2054,6 +2042,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2042669217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042669214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e618f6816599d43a6ad91cb28c05d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078726705
 GameObject:
   m_ObjectHideFlags: 0

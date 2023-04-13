@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CarSelect : MonoBehaviour
+public class CarSelectB : MonoBehaviour
 {
     private GameObject[] carList;
     private int index = 3; // The index of the currently selected car (default value is 3)
@@ -9,7 +11,7 @@ public class CarSelect : MonoBehaviour
     private void Start()
     {
         // Retrieve the index of the previously selected car from player preferences
-        index = PlayerPrefs.GetInt("Character Selected");
+        index = PlayerPrefs.GetInt("Character SelectedB");
 
         // Create an array to store all the cars available in the scene
         carList = new GameObject[transform.childCount];
@@ -74,7 +76,8 @@ public class CarSelect : MonoBehaviour
     // Save the selected car to player preferences and load the main game scene
     public void StartGame()
     {
-        PlayerPrefs.SetInt("Character Selected", index);
-        SceneManager.LoadSceneAsync("CarSelectB");
+        PlayerPrefs.SetInt("Character SelectedB", index);
+        SceneManager.LoadSceneAsync("MainScene");
     }
 }
+
