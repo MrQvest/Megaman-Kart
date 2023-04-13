@@ -13,13 +13,11 @@ namespace ModScripts
         public float explosionRadius = 5f;
         public GameObject explosionEffect;
         private Transform target;
-        private float currentSpeed;
 
             private void Start()
         {
             // Encontra o jogador e define como alvo do casco azul
             target = GameObject.FindGameObjectWithTag("Player").transform;
-            currentSpeed = target.GetComponent<ArcadeKart>().baseStats.Acceleration;
         }
 
         private void Update()
@@ -44,17 +42,17 @@ namespace ModScripts
                   float distance = Vector3.Distance(transform.position, target.position);
                 if (other.gameObject.tag == "Player" && distance <= explosionRadius)
                 {
-                    Instantiate(explosionEffect, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                     // Causa dano ao jogador aqui
-                    currentSpeed = 0f;
+                    other.gameObject.GetComponent<ArcadeKart>().baseStats.Acceleration = 0f;
+                    other.gameObject.GetComponent<ArcadeKart>().baseStats.TopSpeed = 0f;
                     // Inicia a coroutine para restaurar a velocidade padrão depois de 3 segundos
                     StartCoroutine(RestoreSpeed(3f));
                 }
             }
             public void UseItem(Transform position, Quaternion rotation)
         {
-            Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
+            Instantiate(gameObject, position.position - (new Vector3(0f, 0f, 0f)), rotation);
         }
             private IEnumerator RestoreSpeed(float delay)
             {
@@ -62,7 +60,8 @@ namespace ModScripts
                 yield return new WaitForSeconds(delay);
 
                 // Restaura a velocidade padrão do jogador
-                currentSpeed = 5f;
+                target.GetComponent<ArcadeKart>().baseStats.Acceleration = 10f;
+                target.GetComponent<ArcadeKart>().baseStats.TopSpeed = 30f;
             }
         }
 }
