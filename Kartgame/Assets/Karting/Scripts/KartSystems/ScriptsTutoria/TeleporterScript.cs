@@ -37,45 +37,12 @@ namespace ModScripts
 
         private void Update()
         {
-            if (isTeleporting)
+            /*if (isTeleporting)
             {
                 return;
-            }
+            }*/
 
-            // Verifica se há um jogador próximo o suficiente para teleporte
-            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
-            int numValidColliders = 0;
-            foreach (Collider col in colliders)
-            {
-                print(playerObject);
-                // Se os colliders estiverem nas layers PlayerA ou PlayerB e não forem o jogador atual
-                if (col.gameObject.layer != playerObject.layer)
-                {
-                    if(col.gameObject.layer == 15 || col.gameObject.layer == 16)
-                    {
-                        print(col.gameObject.layer);
-                        // Os adiciona à numValidColliders
-                        numValidColliders++;
-                    }
-                 
-                }
-            }
-            if (numValidColliders >= 1)
-            {
-                // Teleporta para o próximo jogador
-                List<Collider> validColliders = new List<Collider>();
-                foreach (Collider col in colliders)
-                {
-                    if ((col.gameObject.layer == LayerMask.NameToLayer("PlayerA") || col.gameObject.layer == LayerMask.NameToLayer("PlayerB")) && col.gameObject != playerObject)
-                    {
-                        validColliders.Add(col);
-                    }
-                }
-                
-
-                Collider target = validColliders[0];
-                StartCoroutine(Teleport(target.transform));
-            }
+            
         }
 
 
@@ -105,7 +72,8 @@ namespace ModScripts
             playerObject = position.gameObject;
             Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
             //print(position.gameObject.name); //Essa linha da print no nome do objeto que usou o item
-            print(playerObject.layer);
+            print(playerObject.name);
+            CheckTP();
         }
 
         private void OnDrawGizmosSelected()
@@ -113,6 +81,44 @@ namespace ModScripts
             Gizmos.color = Color.red;
 
             Gizmos.DrawWireSphere(transform.position, maxRange);
+        }
+
+        void CheckTP()
+        {
+            // Verifica se há um jogador próximo o suficiente para teleporte
+            Collider[] colliders = Physics.OverlapSphere(transform.position, maxRange);
+            int numValidColliders = 0;
+            foreach (Collider col in colliders)
+            {
+                print(playerObject);
+                // Se os colliders estiverem nas layers PlayerA ou PlayerB e não forem o jogador atual
+                if (col.gameObject.layer != playerObject.layer)
+                {
+                    if (col.gameObject.layer == 15 || col.gameObject.layer == 16)
+                    {
+                        print(col.gameObject.layer);
+                        // Os adiciona à numValidColliders
+                        numValidColliders++;
+                    }
+
+                }
+            }
+            if (numValidColliders >= 1)
+            {
+                // Teleporta para o próximo jogador
+                List<Collider> validColliders = new List<Collider>();
+                foreach (Collider col in colliders)
+                {
+                    if ((col.gameObject.layer == LayerMask.NameToLayer("PlayerA") || col.gameObject.layer == LayerMask.NameToLayer("PlayerB")) && col.gameObject != playerObject)
+                    {
+                        validColliders.Add(col);
+                    }
+                }
+
+
+                Collider target = validColliders[0];
+                StartCoroutine(Teleport(target.transform));
+            }
         }
     }
 
