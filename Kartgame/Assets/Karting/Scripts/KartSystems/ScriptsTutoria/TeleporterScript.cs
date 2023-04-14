@@ -8,19 +8,20 @@ namespace ModScripts
     {
         public float maxRange = 5f;
         public float teleportTime = 2f;
-        public LayerMask playerALayer;
-        public LayerMask playerBLayer;
+        [SerializeField]
+        private LayerMask playerALayer;
+        [SerializeField]
+        private LayerMask playerBLayer;
 
         private bool isTeleporting = false;
         private GameObject playerObject;
+        //private Transform position;
 
         // Lista de Rigidbody chamada rdbdList
         List<Rigidbody> rdbdList = new List<Rigidbody>();
 
         private void Start()
         {
-            playerALayer = LayerMask.GetMask("PlayerA");
-            playerBLayer = LayerMask.GetMask("PlayerB");
 
             // Procura por todos os objetos contendo Rigidbody
             foreach (Rigidbody rdbds in FindObjectsOfType<Rigidbody>())
@@ -29,9 +30,9 @@ namespace ModScripts
                 if (rdbds.CompareTag("Player"))
                 {
                     rdbdList.Add(rdbds);
-
                 }
             }
+            //print(rdbdList.Count);
         }
 
         private void Update()
@@ -46,11 +47,17 @@ namespace ModScripts
             int numValidColliders = 0;
             foreach (Collider col in colliders)
             {
+                print(playerObject);
                 // Se os colliders estiverem nas layers PlayerA ou PlayerB e não forem o jogador atual
-                if ((col.gameObject.layer == LayerMask.NameToLayer("PlayerA") || col.gameObject.layer == LayerMask.NameToLayer("PlayerB")) && col.gameObject != playerObject)
+                if (col.gameObject.layer != playerObject.layer)
                 {
-                    // Os adiciona à numValidColliders
-                    numValidColliders++;
+                    if(col.gameObject.layer == 15 || col.gameObject.layer == 16)
+                    {
+                        print(col.gameObject.layer);
+                        // Os adiciona à numValidColliders
+                        numValidColliders++;
+                    }
+                 
                 }
             }
             if (numValidColliders >= 1)
@@ -64,6 +71,7 @@ namespace ModScripts
                         validColliders.Add(col);
                     }
                 }
+                
 
                 Collider target = validColliders[0];
                 StartCoroutine(Teleport(target.transform));
@@ -96,8 +104,17 @@ namespace ModScripts
         {
             playerObject = position.gameObject;
             Instantiate(gameObject, position.position - (new Vector3(0f, 2f, 0f)), rotation);
-            print(position.gameObject.name); //Essa linha da print no nome do objeto que usou o item
+            //print(position.gameObject.name); //Essa linha da print no nome do objeto que usou o item
+            print(playerObject.layer);
+        }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawWireSphere(transform.position, maxRange);
         }
     }
+
+  
 }
