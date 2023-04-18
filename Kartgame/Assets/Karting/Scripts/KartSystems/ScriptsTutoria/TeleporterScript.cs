@@ -73,15 +73,12 @@ namespace ModScripts
             }
             Collider target = validColliders[0];
             Debug.Break();
-            print("Active? " + gameObject.activeInHierarchy);
-            StartCoroutine(Teleport(target.transform));
+            print("Active? " + gameObject.activeSelf);
+            Teleport1(target);
         }
 
-        private IEnumerator Teleport(Transform target)
+        private void Teleport1(Collider target)
         {
-            // Aguarda o tempo de carregamento
-            yield return new WaitForSeconds(teleportTime);
-
             // Obtém a velocidade do kart atual
             Vector3 currentVelocity = playerObject.GetComponent<Rigidbody>().velocity;
 
