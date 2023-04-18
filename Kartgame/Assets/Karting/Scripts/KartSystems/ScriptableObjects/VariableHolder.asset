@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItemP1: {fileID: 0}
   itemUsed: 1
-  selectedItemP2: {fileID: 0}
+  selectedItemP2: {fileID: 1414593490427805831, guid: 18642e5e76b70722b914a4b0d64cc1a1,
+    type: 3}
   itemHolderP1: {fileID: 0}
   itemHolderP2: {fileID: 0}
