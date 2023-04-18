@@ -21,7 +21,7 @@ namespace ModScripts
         {
             playerObject = position.gameObject;
             Instantiate(gameObject, position.position, rotation);
-            print(playerObject.name);
+            //print(playerObject.name);
             CheckTP();
         }
 
@@ -44,8 +44,8 @@ namespace ModScripts
             numValidColliders = 0;
             foreach (Collider col in colliders)
             {
-                print(playerObject);
-                print(col.gameObject);
+                //print(playerObject);
+                //print(col.gameObject);
                 // Se os colliders estiverem nas layers PlayerA ou PlayerB e não forem o jogador atual
                 if (col.gameObject.layer != playerObject.layer)
                 {
@@ -71,9 +71,10 @@ namespace ModScripts
                     validColliders.Add(col);
                 }
             }
-            Collider target = validColliders[0];
+            Collider target = validColliders[1];
             Debug.Break();
-            print("Active? " + gameObject.activeSelf);
+            //print("Active? " + gameObject.activeSelf);
+            print(target);
             Teleport1(target);
         }
 
@@ -84,8 +85,8 @@ namespace ModScripts
 
             // Troca a posição do kart atual com o kart alvo
             Vector3 tempPosition = playerObject.transform.position;
-            playerObject.transform.position = target.position;
-            target.position = tempPosition;
+            playerObject.transform.position = target.gameObject.transform.position;
+            target.gameObject.transform.position = tempPosition;
 
             // Mantém a velocidade do kart atual
             playerObject.GetComponent<Rigidbody>().velocity = currentVelocity;
