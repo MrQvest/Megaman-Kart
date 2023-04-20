@@ -13,14 +13,33 @@ namespace ModScripts
         public float explosionRadius = 5f;
         public GameObject explosionEffect;
         private Transform target;
+        private ArcadeKart hitTarget;
 
             private void Start()
         {
             // Encontra o jogador e define como alvo do casco azul
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = findPlayer().transform;
         }
+            private Transform findPlayer()
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                GameObject farthest = null;
+                float maxDist = -Mathf.Infinity;
+                Vector3 position = transform.position;
+                foreach (GameObject go in players)
+                {
+                    Vector3 diff = go.transform.position - position;
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance > maxDist)
+                    {
+                        farthest = go;
+                        maxDist = curDistance;
+                    }
+                }
+                return farthest.transform;
+            }
 
-        private void Update()
+            private void Update()
         {
             // Verifica se o alvo estÅEdentro do raio de perseguiÁ„o
             float distance = Vector3.Distance(transform.position, target.position);
@@ -37,18 +56,23 @@ namespace ModScripts
                     // Se o casco azul atingir o jogador, explode e causa dano
                 }                
         }
-            void OnCollisionEnter(Collision other)
+            void OnTriggerEnter(Collider other)
             {
                   float distance = Vector3.Distance(transform.position, target.position);
                 if (other.gameObject.tag == "Player" && distance <= explosionRadius)
                 {
                     Destroy(gameObject);
+                    hitTarget = other.gameObject.GetComponent<ArcadeKart>();
+
                     // Causa dano ao jogador aqui
-                    other.gameObject.GetComponent<ArcadeKart>().baseStats.Acceleration = 0f;
-                    other.gameObject.GetComponent<ArcadeKart>().baseStats.TopSpeed = 0f;
+                    hitTarget.baseStats.Acceleration = 0f;
+                    hitTarget.baseStats.TopSpeed = 0f;
                     // Inicia a coroutine para restaurar a velocidade padr„o depois de 3 segundos
-                    StartCoroutine(RestoreSpeed(3f));
                 }
+            }
+            private void OnDestroy()
+            {
+                hitTarget.StartCoroutine(RestoreSpeed(3f));
             }
             public void UseItem(Transform position, Quaternion rotation)
         {
@@ -60,8 +84,8 @@ namespace ModScripts
                 yield return new WaitForSeconds(delay);
 
                 // Restaura a velocidade padr„o do jogador
-                target.GetComponent<ArcadeKart>().baseStats.Acceleration = 10f;
-                target.GetComponent<ArcadeKart>().baseStats.TopSpeed = 30f;
+               hitTarget.baseStats.Acceleration = 10f;
+               hitTarget.baseStats.TopSpeed = 30f;
             }
         }
 }
