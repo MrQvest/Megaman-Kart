@@ -76,7 +76,7 @@ namespace ModScripts
                 }
             }
             Collider target = validColliders[1];
-            Debug.Break();
+            //Debug.Break();
             //print("Active? " + gameObject.activeSelf);
             print(target);
             Teleport1(target);
