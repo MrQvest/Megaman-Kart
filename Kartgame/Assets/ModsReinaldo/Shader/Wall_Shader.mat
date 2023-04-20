@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Shader
-  m_Shader: {fileID: -6465566751694194690, guid: e5124d1bd7f0abf41a5241a43a3db388,
+  m_Shader: {fileID: -6465566751694194690, guid: 7aafed1cff677024b9d8bc6c1a3ca1de,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 61c377f838c48c14696e789e812fa173, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,6 +88,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_4c5977f8c146466a8764ade767c2937d_Out_0:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ae6124c64df645fbb87489fc64e8fbe8_Out_0:
+        m_Texture: {fileID: 2800000, guid: 61c377f838c48c14696e789e812fa173, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_b929942873b24c01a92d0edd92435879_Out_0:
@@ -143,5 +147,6 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainTexColor: {r: 0.18970266, g: 0.5040859, b: 0.8207547, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
