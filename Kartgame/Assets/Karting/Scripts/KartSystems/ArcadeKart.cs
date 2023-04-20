@@ -288,27 +288,51 @@ namespace KartGame.KartSystems
         
         [SerializeField] VariablesHolder variablesHolder;
 
+        private GameObject tempSelectedObject;
 
         void FixedUpdate()
         {
-            if (Input.UseItem && !variablesHolder.itemUsed)
-            {
-                //print("Object_"+variablesHolder.selectedItemP1.GetComponent<IUseItem>());
-                IUseItem useItem = variablesHolder.selectedItemP1.GetComponent<IUseItem>();
-                //print("interface"+useItem);
-                if(useItem != null) 
+            if (Input.UseItem )
+            { 
+                if (gameObject.layer == 15 && !variablesHolder.itemUsedP1) 
                 {
-                    useItem.UseItem(transform, transform.rotation);
-                    variablesHolder.itemUsed = true;
-                    variablesHolder.selectedItemP1 = null;
-                    Destroy(variablesHolder.itemHolderP1);
-                    variablesHolder.itemHolderP1 = null;
+                    //print("Object_"+variablesHolder.selectedItemP1.GetComponent<IUseItem>());
+                    IUseItem useItem = variablesHolder.selectedItemP1.GetComponent<IUseItem>();
+                    //print("interface"+useItem);
+                    if (useItem != null)
+                    {
+                        useItem.UseItem(transform, transform.rotation);
+                        variablesHolder.itemUsedP1 = true;
+                        variablesHolder.selectedItemP1 = null;
+                        Destroy(variablesHolder.itemHolderP1);
+                        variablesHolder.itemHolderP1 = null;
+                    }
+                    else
+                    {
+                        useItem = null;
+                        useItem = variablesHolder.selectedItemP1.GetComponent<IUseItem>();
+                        print(useItem);
+                    }
                 }
-                else
+                else if (gameObject.layer == 16 && !variablesHolder.itemUsedP2) 
                 {
-                    useItem = null;
-                    useItem = variablesHolder.selectedItemP1.GetComponent<IUseItem>();
-                    print(useItem);
+                    //print("Object_"+variablesHolder.selectedItemP1.GetComponent<IUseItem>());
+                    IUseItem useItem = variablesHolder.selectedItemP2.GetComponent<IUseItem>();
+                    //print("interface"+useItem);
+                    if (useItem != null)
+                    {
+                        useItem.UseItem(transform, transform.rotation);
+                        variablesHolder.itemUsedP2 = true;
+                        variablesHolder.selectedItemP2 = null;
+                        Destroy(variablesHolder.itemHolderP2);
+                        variablesHolder.itemHolderP2 = null;
+                    }
+                    else
+                    {
+                        useItem = null;
+                        useItem = variablesHolder.selectedItemP2.GetComponent<IUseItem>();
+                        print(useItem);
+                    }
                 }
                 
             }
