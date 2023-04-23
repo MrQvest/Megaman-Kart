@@ -16,8 +16,8 @@ public class TimeZoneScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !slowed)
         {
             arcadeKart = other.gameObject.GetComponentInParent<ArcadeKart>();
-            print("GameObject"+other.gameObject);
-            print("Script" + arcadeKart);
+            //print("GameObject"+other.gameObject);
+            //print("Script" + arcadeKart);
             if (arcadeKart != null)
             {                
                 arcadeKart.baseStats.TopSpeed /= 2;

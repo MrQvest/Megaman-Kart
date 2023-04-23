@@ -92,8 +92,8 @@ public class ItemBehavior : MonoBehaviour
                     modelScale = 6.25f;
                     break;
 
-                case "teleporter(Clone)":
-                    modelScale = 1f;
+                case "Teleporte(Clone)":
+                    modelScale = 0.35f;
                     break;
 
                 case "ShieldEffect_View(Clone)":
@@ -137,7 +137,7 @@ public class ItemBehavior : MonoBehaviour
             case "ShockwaveModel(Clone)":
                 tempObject = itemObjects[3];
                 break;
-            case "teleporter(Clone)":
+            case "Teleporte(Clone)":
                 tempObject = itemObjects[4];
                 break;
             case "ShieldEffect_View(Clone)":

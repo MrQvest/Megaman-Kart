@@ -2762,12 +2762,12 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: DriftControl
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: DriftDampening
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2777,12 +2777,12 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: baseStats.Grip
-      value: 0.97
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: baseStats.Steer
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2803,7 +2803,7 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: baseStats.Braking
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2813,7 +2813,7 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: baseStats.TopSpeed
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2828,7 +2828,7 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: MinAngleToFinishDrift
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2838,7 +2838,7 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: baseStats.Acceleration
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
@@ -2858,7 +2858,7 @@ PrefabInstance:
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: MinSpeedPercentToFinishDrift
-      value: 0.308
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909977, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
