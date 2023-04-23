@@ -304,7 +304,7 @@ namespace KartGame.KartSystems
                         useItem.UseItem(transform, transform.rotation);
                         variablesHolder.itemUsedP1 = true;
                         variablesHolder.selectedItemP1 = null;
-                        Destroy(variablesHolder.itemHolderP1);
+                        Destroy(variablesHolder.itemHolderP1,3f);
                         variablesHolder.itemHolderP1 = null;
                     }
                     else
@@ -324,7 +324,7 @@ namespace KartGame.KartSystems
                         useItem.UseItem(transform, transform.rotation);
                         variablesHolder.itemUsedP2 = true;
                         variablesHolder.selectedItemP2 = null;
-                        Destroy(variablesHolder.itemHolderP2);
+                        Destroy(variablesHolder.itemHolderP2,3f);
                         variablesHolder.itemHolderP2 = null;
                     }
                     else
