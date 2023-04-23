@@ -32,6 +32,9 @@ public class ItemBehavior : MonoBehaviour
     [SerializeField]
     private List<GameObject> itemObjects;
 
+    private GameObject playerObject;
+    private GameObject tempObject;
+
 
     [SerializeField] VariablesHolder variablesHolder;
 
@@ -47,6 +50,8 @@ public class ItemBehavior : MonoBehaviour
         _w_spinB = Random.Range(-20f, 20f);
         _w_spinC = Random.Range(-20f, 20f);
         transform.localScale = Vector3.zero;
+
+        /*print(playerObject.name);*/
     }
 
     private IEnumerator FadeIn()
@@ -110,36 +115,51 @@ public class ItemBehavior : MonoBehaviour
         SelectCorrectItem();
     }
 
+    public void GetPlayerObject(GameObject playerTempObject)
+    {
+        playerObject = playerTempObject;
+        //print(playerObject.name);
+    }
     private void SelectCorrectItem()
     {
 
         switch (itemView.name)
         {
             case "Peao(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[0];
+                tempObject = itemObjects[0];
                     break;
             case "Cone(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[1];
+                tempObject = itemObjects[1];
                 break;
             case "Drone(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[2];
+                tempObject = itemObjects[2];
                 break;
             case "ShockwaveModel(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[3];
+                tempObject = itemObjects[3];
                 break;
             case "teleporter(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[4];
+                tempObject = itemObjects[4];
                 break;
             case "ShieldEffect_View(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[5];
+                tempObject = itemObjects[5];
                 break;
             case "item kart joao(Clone)":
-                variablesHolder.selectedItemP1 = itemObjects[6];
+                tempObject = itemObjects[6];
                 break;
 
         }
+        if (playerObject.layer == 15)
+        {
+            variablesHolder.selectedItemP1 = tempObject;
+            variablesHolder.itemUsedP1 = false;
+        }
+        else if (playerObject.layer == 16)
+        {
+            variablesHolder.selectedItemP2 = tempObject;
+            variablesHolder.itemUsedP2 = false;
+        }
 
-        variablesHolder.itemUsed = false;
+        
 
     }
 

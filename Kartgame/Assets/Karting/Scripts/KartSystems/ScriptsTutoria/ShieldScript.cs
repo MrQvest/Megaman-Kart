@@ -14,12 +14,18 @@ namespace ModScripts
             StartCoroutine(FadeAnim());
             GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
             float nearestDistance = Mathf.Infinity;
+
+            // Para cada GameObject chamado obj com a Tag Player
             foreach (GameObject obj in objectsWithTag)
             {
                 float distance = Vector3.Distance(transform.position, obj.transform.position);
+
+                // Se a distância atual for menor que Infinito
                 if (distance < nearestDistance)
                 {
                     nearestObject = obj;
+
+                    // Infinito serEdistância atual
                     nearestDistance = distance;
                 }
             }

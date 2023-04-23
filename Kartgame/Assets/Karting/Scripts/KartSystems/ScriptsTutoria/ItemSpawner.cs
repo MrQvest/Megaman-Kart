@@ -58,7 +58,12 @@ public class ItemSpawner : MonoBehaviour
                     }
                     var itemHolder = Instantiate(itemPlayerHolder, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, other.transform);
                     itemHolder.transform.localPosition = new Vector3(0, 3, -2);
-                    variablesHolder.itemHolderP1 = itemHolder;
+                    ItemBehavior itemBehavior = itemHolder.GetComponent<ItemBehavior>();
+                    itemBehavior.GetPlayerObject(other.gameObject);
+                    if (other.gameObject.layer == 15)
+                        variablesHolder.itemHolderP1 = itemHolder;
+                    else if (other.gameObject.layer == 16)
+                        variablesHolder.itemHolderP2 = itemHolder;
                 }
             }
         }

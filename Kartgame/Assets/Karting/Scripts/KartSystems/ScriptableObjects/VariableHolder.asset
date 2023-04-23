@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ddf4fdaa38b5e4f9460c6c41da3c35, type: 3}
   m_Name: VariableHolder
   m_EditorClassIdentifier: 
-  selectedItemP1: {fileID: 6656221332871443408, guid: 7adc0c122de40b04eb0d686c0761c2f3,
+  selectedItemP1: {fileID: 0}
+  itemUsedP1: 1
+  itemUsedP2: 0
+  selectedItemP2: {fileID: 841789684565743725, guid: 92ca4e4f29349b949b97f795d3599ea5,
     type: 3}
-  itemUsed: 0
-  selectedItemP2: {fileID: 0}
   itemHolderP1: {fileID: 0}
   itemHolderP2: {fileID: 0}

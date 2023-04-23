@@ -75,6 +75,6 @@ public class CarSelect : MonoBehaviour
     public void StartGame()
     {
         PlayerPrefs.SetInt("Character Selected", index);
-        SceneManager.LoadSceneAsync("MainScene");
+        SceneManager.LoadSceneAsync("CarSelectB");
     }
 }

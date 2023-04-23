@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Karting/Scenes/MLTraining/CarSelect.unity
     guid: 9a99e2c3c2b3e524193944097bb08deb
+  - enabled: 1
+    path: Assets/Karting/Scenes/MLTraining/CarSelectB.unity
+    guid: a6838d8bfa802c241af307d354b181e6
   m_configObjects: {}
