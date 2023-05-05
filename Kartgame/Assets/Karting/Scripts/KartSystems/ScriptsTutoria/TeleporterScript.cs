@@ -40,24 +40,25 @@ namespace ModScripts
                     else
                     {
                         target = collider.gameObject;                        
-                        Teleport(target);
+                        Teleport(target, transform.position);
                     }
                 }
             }
         }                  
 
-        void Teleport(GameObject target)
+        void Teleport(GameObject target, Vector3 tempPosition)
         {
             Debug.Log(target.name);
-            float elevation = 0f;
+            float elevation = 4f;
             // Obtém a velocidade do kart atual e do kart alvo
             Vector3 currentVelocity = playerObject.GetComponent<Rigidbody>().velocity;
             Vector3 targetVelocity = target.GetComponentInParent<Rigidbody>().velocity;
 
             // Troca a posição do kart atual com o kart alvo
-            Vector3 tempPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + elevation, playerObject.transform.position.z);           
+           // Vector3 tempPosition = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + elevation, playerObject.transform.position.z);           
             playerObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + elevation, target.transform.position.z);
-            target.transform.position = tempPosition;
+            Debug.Break();
+            target.transform.position = tempPosition + new Vector3(0, elevation, 0);
             
             // Mantém a velocidade dos karts 
             playerObject.GetComponent<Rigidbody>().velocity = currentVelocity;
